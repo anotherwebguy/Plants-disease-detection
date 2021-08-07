@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "799553447636",
+    "firebase_url": "https://plant-disease-detection-1b276-default-rtdb.firebaseio.com",
+    "project_id": "plant-disease-detection-1b276",
+    "storage_bucket": "plant-disease-detection-1b276.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799553447636:android:395c6c5b36b0ba6c957d41",
+        "android_client_info": {
+          "package_name": "com.example.plantdiseasedetector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799553447636-4keg180ippql3kpb57987stvs5hv99qb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3W6OMyky18go62wUwghWJ43S8N8qlfQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799553447636-4keg180ippql3kpb57987stvs5hv99qb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
