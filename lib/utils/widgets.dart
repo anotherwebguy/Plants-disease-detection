@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:plantdiseasedetector/utils/constants.dart';
 
 Widget text(var text,
@@ -43,4 +44,14 @@ Widget text2(var text,
       textAlign: isCentered ? TextAlign.center : TextAlign.start,
       maxLines: maxLine,
       style: TextStyle(fontFamily: fontFamily, fontSize: fontSize, color: textColor, height: 1.5, letterSpacing: latterSpacing));
+}
+
+changeStatusColor(Color color) async {
+  try {
+    await FlutterStatusbarcolor.setStatusBarColor(color, animate: true);
+    FlutterStatusbarcolor.setStatusBarWhiteForeground(
+        useWhiteForeground(color));
+  } on Exception catch (e) {
+    print(e);
+  }
 }

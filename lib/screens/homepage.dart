@@ -1,7 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:nb_utils/nb_utils.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plantdiseasedetector/screens/drawer.dart';
+import 'package:plantdiseasedetector/services/dbdata.dart';
+import 'package:plantdiseasedetector/utils/colors.dart';
+import 'package:plantdiseasedetector/utils/constants.dart';
+import 'package:plantdiseasedetector/utils/widgets.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,143 +14,143 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
-  // List<TSlider> mSliderList;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   mSliderList = getSliders();
-  // }
-
-  
-  
   @override
   Widget build(BuildContext context) {
-    var l = MediaQuery.of(context).size.width;
+    changeStatusColor(t5DarkNavy);
+    var width = MediaQuery.of(context).size.width;
+    width = width - 50;
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
     return Scaffold(
-        appBar: AppBar(
-          // leading: IconButton(
-          //   icon: Icon(Icons.menu, color: Colors.black),
-          //   onPressed: () {
-          //     _scaffoldKey.currentState.openDrawer();
-          //   },
-          // ),
-          actionsIconTheme:IconThemeData(color: Colors.black),
-          title: Text('Dashboard', style: boldTextStyle(color: Colors.black)),
-          backgroundColor: Colors.white,
-          actions: [
-            IconButton(
-              onPressed: () {
-                toast('Profile');
-              },
-              icon: Icon(Icons.notifications, color: Colors.black,),
-            ),
-            IconButton(
-              onPressed: () {
-                toast('Profile');
-              },
-              icon: Image.network(
-                      'https://tecake.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg')
-                  .cornerRadiusWithClipRRect(20),
-            )
-          ],
-        ),
-        drawer: UserDrawer(),
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          //padding: EdgeInsets.only(top: 90),
-          physics: ScrollPhysics(),
-          child: Column(
-            children: [
-              SizedBox(height: 16),
-              //TSliderWidget(),
-              SizedBox(height: 16),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, top: 15),
-                      child: Row(
-                        children: [
-                          Text("Diseases"),
-                          Padding(
-                            padding: EdgeInsets.only(left: l - 135),
-                            child: GestureDetector(
-                                onTap: () {}, child: Text("View All")),
-                          )
-                        ],
+      backgroundColor: t5DarkNavy,
+      key: _scaffoldKey,
+      drawer: Drawer(child: UserDrawer()),
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: 70,
+              margin: EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundImage: CachedNetworkImageProvider(profileimg),
+                        radius: 25,
                       ),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.only(top: 15),
-                        child: Container(
-                          height: 200,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              // Item(
-                              //   title: "Disease 1",
-                              //   photo: "assets/images/Potato-leaf-blight.jpg",
-                              //   description:
-                              //       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                              //   solution: "Injection",
-                              // ),
-                              // Item(
-                              //   title: "Disease 2",
-                              //   photo: "assets/images/Potato-leaf-blight.jpg",
-                              //   description: "I am Eren Yeager",
-                              //   solution: "Death",
-                              // ),
-                              // Item(
-                              //   title: "Disease 3",
-                              //   photo: "assets/images/Potato-leaf-blight.jpg",
-                              //   description: "I am levi",
-                              //   solution: "KIll",
-                              // ),
-                              // Item(
-                              //   title: "Disease 1",
-                              //   photo: "assets/images/Potato-leaf-blight.jpg",
-                              //   description: " I am Akame",
-                              //   solution: "Kill",
-                              // ),
-                              SizedBox(
-                                width: 15,
-                              )
-                            ],
-                          ),
-                        ))
-                  ],
+                      SizedBox(width: 16),
+                      text(name,
+                          textColor: Colors.white,
+                          fontSize: textSizeNormal,
+                          fontFamily: fontMedium)
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          print("SVsvsdv");
+                        },
+                        icon: SvgPicture.asset(
+                          "assets/t5_notification_2.svg",
+                          width: 25,
+                          height: 25,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      IconButton(
+                        onPressed: () {
+                          if (_scaffoldKey.currentState.isDrawerOpen) {
+                            _scaffoldKey.currentState.openEndDrawer();
+                          } else {
+                            _scaffoldKey.currentState.openDrawer();
+                          }
+                        },
+                        icon: SvgPicture.asset(
+                          "assets/t5_options.svg",
+                          width: 25,
+                          height: 25,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
+              child: Container(
+                padding: EdgeInsets.only(top: 28),
+                alignment: Alignment.bottomLeft,
+                height: MediaQuery.of(context).size.height - 100,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24),
+                    )),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [],
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+            // SingleChildScrollView(
+            //   padding: EdgeInsets.only(top: 100),
+            //   child: Container(
+            //     padding: EdgeInsets.only(top: 28),
+            //     alignment: Alignment.topLeft,
+            //     height: MediaQuery.of(context).size.height - 100,
+            //     decoration: BoxDecoration(
+            //         color: Colors.white,
+            //         borderRadius: BorderRadius.only(
+            //             topLeft: Radius.circular(24),
+            //             topRight: Radius.circular(24))),
+            //     child: Column(
+            //       children: <Widget>[],
+            //     ),
+            //   ),
+            // ),
+          ],
         ),
-        floatingActionButton: SpeedDial(
+      ),
+      floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
-        backgroundColor: Colors.deepPurple[500],
+        backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
         children: [
           SpeedDialChild(
-            backgroundColor: Colors.red,
-            child: Icon(Icons.camera, color: Colors.white,),
-            label: 'Camera',
-            labelBackgroundColor: Colors.white,
-            onTap: (){}
-          ),
+              backgroundColor: Colors.red,
+              child: Icon(
+                Icons.camera,
+                color: Colors.white,
+              ),
+              label: 'Camera',
+              labelBackgroundColor: Colors.white,
+              onTap: () {}),
           SpeedDialChild(
-            backgroundColor: Colors.blue,
-            child: Icon(Icons.photo, color: Colors.white,),
-            label: 'Gallery',
-            labelBackgroundColor: Colors.white,
-            onTap: (){
-            }
-          ),
+              backgroundColor: Colors.blue,
+              child: Icon(
+                Icons.photo,
+                color: Colors.white,
+              ),
+              label: 'Gallery',
+              labelBackgroundColor: Colors.white,
+              onTap: () {}),
         ],
       ),
-        );
+    );
   }
 }

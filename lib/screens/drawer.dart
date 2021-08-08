@@ -1,7 +1,11 @@
 
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:plantdiseasedetector/authentication/signin.dart';
 import 'package:plantdiseasedetector/screens/homepage.dart';
+import 'package:plantdiseasedetector/screens/walkthrough.dart';
+import 'package:plantdiseasedetector/services/dbdata.dart';
 import 'package:plantdiseasedetector/utils/widgets.dart';
 
 class UserDrawer extends StatefulWidget {
@@ -12,6 +16,7 @@ class UserDrawer extends StatefulWidget {
 class _UserDrawerState extends State<UserDrawer> {
   var selectedItem = -1;
   int counter=0;
+  AuthService _auth = new AuthService();
   @override
   void initState() {
     // TODO: implement initState
@@ -44,9 +49,10 @@ class _UserDrawerState extends State<UserDrawer> {
                     style: TextStyle(color:Colors.blue,),
                   ),
                   onPressed: () async{
-                  //  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context){
-                  //    return LoginPage();
-                  //  }), (route) => false);
+                    await _auth.signOutGoogle();
+                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context){
+                     return WalkThrough();
+                   }), (route) => false);
                   },
                 ),
                 FlatButton(
@@ -113,7 +119,7 @@ class _UserDrawerState extends State<UserDrawer> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           CircleAvatar(
-                              backgroundImage: NetworkImage("https://tecake.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg"),
+                              backgroundImage: CachedNetworkImageProvider(profileimg,),
                               radius: 40),
                           SizedBox(width: 5),
                           Expanded(
@@ -124,13 +130,13 @@ class _UserDrawerState extends State<UserDrawer> {
                                 children: <Widget>[
                                   SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
-                                    child: text1("name",
+                                    child: text1(name,
                                         textColor: Colors.white,
                                         fontFamily: 'Medium',
                                         fontSize: 20.0),
                                   ),
                                   SizedBox(height: 8),
-                                  text("phn.toString()",
+                                  text(email,
                                       textColor: Colors.white,
                                       fontSize: 14.0),
                                 ],

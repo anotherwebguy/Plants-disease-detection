@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:plantdiseasedetector/screens/homepage.dart';
+import 'package:plantdiseasedetector/screens/walkthrough.dart';
+import 'package:plantdiseasedetector/services/dbdata.dart';
 
 void main() async {
   try {
@@ -12,6 +15,7 @@ void main() async {
   }
 
   await Firebase.initializeApp();
+  await fetchData();
   runApp(MyApp());
 }
 
@@ -26,7 +30,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         primaryIconTheme: IconThemeData(color: Colors.black)
       ),
-      home: HomePage(),
+      home: FirebaseAuth.instance.currentUser != null
+          ? HomePage()
+          :WalkThrough() ,
     );
   }
 }

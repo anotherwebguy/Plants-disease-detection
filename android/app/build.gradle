@@ -28,7 +28,7 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
