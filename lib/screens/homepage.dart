@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plantdiseasedetector/screens/drawer.dart';
+import 'package:plantdiseasedetector/screens/moisture.dart';
+import 'package:plantdiseasedetector/screens/planthealth.dart';
 import 'package:plantdiseasedetector/services/dbdata.dart';
 import 'package:plantdiseasedetector/utils/colors.dart';
 import 'package:plantdiseasedetector/utils/constants.dart';
+import 'package:plantdiseasedetector/utils/planthealththeme.dart';
 import 'package:plantdiseasedetector/utils/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,11 +16,15 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+
+
+
   @override
   void initState() {
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -92,9 +99,9 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 padding: EdgeInsets.only(top: 28),
                 alignment: Alignment.bottomLeft,
-                height: MediaQuery.of(context).size.height - 100,
+                height: MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: FitnessAppTheme.background,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(24),
                       topRight: Radius.circular(24),
@@ -102,27 +109,14 @@ class _HomePageState extends State<HomePage> {
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
-                    children: [],
+                    children: [
+                      PlantHealth(),
+                      MoistureView()
+                    ],
                   ),
                 ),
               ),
             ),
-            // SingleChildScrollView(
-            //   padding: EdgeInsets.only(top: 100),
-            //   child: Container(
-            //     padding: EdgeInsets.only(top: 28),
-            //     alignment: Alignment.topLeft,
-            //     height: MediaQuery.of(context).size.height - 100,
-            //     decoration: BoxDecoration(
-            //         color: Colors.white,
-            //         borderRadius: BorderRadius.only(
-            //             topLeft: Radius.circular(24),
-            //             topRight: Radius.circular(24))),
-            //     child: Column(
-            //       children: <Widget>[],
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
