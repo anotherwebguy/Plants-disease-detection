@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:plantdiseasedetector/authentication/signin.dart';
 import 'package:plantdiseasedetector/screens/homepage.dart';
+import 'package:plantdiseasedetector/screens/notifications.dart';
 import 'package:plantdiseasedetector/screens/walkthrough.dart';
 import 'package:plantdiseasedetector/services/dbdata.dart';
 import 'package:plantdiseasedetector/utils/widgets.dart';
@@ -71,6 +72,9 @@ class _UserDrawerState extends State<UserDrawer> {
                   return HomePage();
                 },
               ), (route) => false);
+        }
+        else if(ind=="notifications"){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>Notifications()));
         }
       },
       child: Container(
@@ -158,7 +162,7 @@ class _UserDrawerState extends State<UserDrawer> {
                   child: Divider(color: Color(0XFFDADADA), height: 1),
                 ),
                 //getDrawerItem(Icons.history, "History", 3),
-                getDrawerItem(Icons.notifications_active, "Notifications", 3,),
+                getDrawerItem(Icons.notifications_active, "Notifications", 3,ind: "notifications"),
                 Padding(
                   padding: const EdgeInsets.only(left:15.0,right: 15.0),
                   child: Divider(color: Color(0XFFDADADA), height: 1),
