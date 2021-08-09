@@ -4,10 +4,12 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plantdiseasedetector/screens/drawer.dart';
 import 'package:plantdiseasedetector/screens/moisture.dart';
+import 'package:plantdiseasedetector/screens/notifications.dart';
 import 'package:plantdiseasedetector/screens/planthealth.dart';
 import 'package:plantdiseasedetector/services/dbdata.dart';
 import 'package:plantdiseasedetector/utils/colors.dart';
 import 'package:plantdiseasedetector/utils/constants.dart';
+import 'package:plantdiseasedetector/utils/itemcard.dart';
 import 'package:plantdiseasedetector/utils/planthealththeme.dart';
 import 'package:plantdiseasedetector/utils/widgets.dart';
 
@@ -28,6 +30,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var l = MediaQuery.of(context).size.width;
     changeStatusColor(t5DarkNavy);
     var width = MediaQuery.of(context).size.width;
     width = width - 50;
@@ -64,6 +67,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     children: [
                       IconButton(
                         onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Notifications()));
                           print("SVsvsdv");
                         },
                         icon: SvgPicture.asset(
@@ -73,7 +77,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           color: Colors.white,
                         ),
                       ),
-                      SizedBox(width: 10),
+                      SizedBox(width: 7),
                       IconButton(
                         onPressed: () {
                           if (_scaffoldKey.currentState.isDrawerOpen) {
@@ -111,7 +115,52 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   child: Column(
                     children: [
                       PlantHealth(),
-                      MoistureView()
+                      Padding(
+                      padding: const EdgeInsets.only(left: 15, bottom: 5),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left:10.0),
+                            child: text("Classified Diseases", fontFamily: fontMedium, fontSize: textSizeMedium),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: l- 249),
+                            child: GestureDetector(
+                              onTap: (){
+                                //Navigator.push(context, MaterialPageRoute(builder: (context)=>));
+                              },
+                              child: Text("View All", style: TextStyle(color: Colors.blue),)),
+                          )
+                        ],
+                      ),
+                    ),
+                      Padding(
+                        padding: const EdgeInsets.only(top:5.0, left: 10, bottom: 10),
+                        child: Container(
+                          height: 200,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              ItemCard(
+                                title: "Disease 1",
+                                photo: "assets/Potato-leaf-blight.jpg",
+                                description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                solution: "Injection",),
+                              ItemCard(
+                                title: "Disease 1",
+                                photo: "assets/Potato-leaf-blight.jpg",
+                                description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                solution: "Injection",),
+                              ItemCard(
+                                title: "Disease 1",
+                                photo: "assets/Potato-leaf-blight.jpg",
+                                description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                solution: "Injection",)
+                            ],
+                          ),
+                        ),
+                      ),
+                      MoistureView(),
                     ],
                   ),
                 ),
