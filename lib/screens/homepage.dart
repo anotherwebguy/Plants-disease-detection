@@ -2,6 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:plantdiseasedetector/diseases/AppleScab.dart';
+import 'package:plantdiseasedetector/diseases/GrapeEsca.dart';
+import 'package:plantdiseasedetector/diseases/PotatoLateBlight.dart';
 import 'package:plantdiseasedetector/screens/drawer.dart';
 import 'package:plantdiseasedetector/screens/moisture.dart';
 import 'package:plantdiseasedetector/screens/notifications.dart';
@@ -141,21 +144,33 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
-                              ItemCard(
-                                title: "Disease 1",
-                                photo: "assets/Potato-leaf-blight.jpg",
-                                description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                                solution: "Injection",),
-                              ItemCard(
-                                title: "Disease 1",
-                                photo: "assets/Potato-leaf-blight.jpg",
-                                description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                                solution: "Injection",),
-                              ItemCard(
-                                title: "Disease 1",
-                                photo: "assets/Potato-leaf-blight.jpg",
-                                description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                                solution: "Injection",)
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>GrapeEsca()));
+                                },
+                                child: ItemCard(
+                                  title: "Grape Esca",
+                                  photo: "https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/22.jpg",
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AppleScab()));
+                                },
+                                child: ItemCard(
+                                  title: "Apple Scab",
+                                  photo: "https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/3.jpg",
+                                  ),
+                              ),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PotatoLateBlight()));
+                                },
+                                child: ItemCard(
+                                  title: "Potato Late Blight",
+                                  photo: "https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/33.jpg",
+                                  ),
+                              )
                             ],
                           ),
                         ),
