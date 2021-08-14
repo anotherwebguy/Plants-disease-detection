@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^0.19.3
   modal_progress_hud: ^0.1.3
   animations: ^2.0.0
+  timeago: ^2.0.28
 
 dev_dependencies:
   flutter_test:

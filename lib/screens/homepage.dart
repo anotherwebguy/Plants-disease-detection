@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       Padding(
                         padding: const EdgeInsets.only(top:5.0, left: 10,right: 10, bottom: 10),
                         child: Container(
-                          height: 300,
+                          height: 200,
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
