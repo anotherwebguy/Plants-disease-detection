@@ -3,10 +3,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:plantdiseasedetector/authentication/signin.dart';
+import 'package:plantdiseasedetector/screens/classifieddiseases.dart';
 import 'package:plantdiseasedetector/screens/homepage.dart';
 import 'package:plantdiseasedetector/screens/notifications.dart';
 import 'package:plantdiseasedetector/screens/walkthrough.dart';
 import 'package:plantdiseasedetector/services/dbdata.dart';
+import 'package:plantdiseasedetector/utils/colors.dart';
 import 'package:plantdiseasedetector/utils/widgets.dart';
 
 class UserDrawer extends StatefulWidget {
@@ -73,9 +75,6 @@ class _UserDrawerState extends State<UserDrawer> {
                 },
               ), (route) => false);
         }
-        else if(ind=="notifications"){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>Notifications()));
-        }
       },
       child: Container(
         color: selectedItem == pos ? Color(0XFFF2ECFD) : Colors.white,
@@ -87,7 +86,7 @@ class _UserDrawerState extends State<UserDrawer> {
             SizedBox(width: 20),
             text2(name,
                 textColor:
-                selectedItem == pos ? Color(0XFF5959fc) : Color(0XFF212121),
+                selectedItem == pos ? Color(0XFF5959fc) : t5DarkNavy,
                 fontSize: 18.0,
                 fontFamily: 'Medium')
           ],
@@ -109,12 +108,13 @@ class _UserDrawerState extends State<UserDrawer> {
             color: Colors.white,
             child: Column(
               children: <Widget>[
+                SizedBox(height: 10,),
                 Padding(
                     padding: const EdgeInsets.only(top: 30, right: 10),
                     child: Container(
                       padding: EdgeInsets.fromLTRB(10, 40, 20, 40),
                       decoration: new BoxDecoration(
-                          color: Color(0XFF5959fc),
+                          color: t5DarkNavy,
                           borderRadius: new BorderRadius.only(
                               bottomRight: const Radius.circular(24.0),
                               topRight: const Radius.circular(24.0))),
@@ -156,13 +156,13 @@ class _UserDrawerState extends State<UserDrawer> {
                   padding: const EdgeInsets.only(left:15.0,right: 15.0),
                   child: Divider(color: Color(0XFFDADADA), height: 1),
                 ),
-                getDrawerItem( Icons.dock_sharp,"Classified Diseases", 2),
+                getDrawerItem( Icons.dock_sharp,"Classified Diseases", 2,tags: ClassifiedDiseases()),
                 Padding(
                   padding: const EdgeInsets.only(left:15.0,right: 15.0),
                   child: Divider(color: Color(0XFFDADADA), height: 1),
                 ),
                 //getDrawerItem(Icons.history, "History", 3),
-                getDrawerItem(Icons.notifications_active, "Notifications", 3,ind: "notifications"),
+                getDrawerItem(Icons.notifications_active, "Notifications", 3,tags: Notifications()),
                 Padding(
                   padding: const EdgeInsets.only(left:15.0,right: 15.0),
                   child: Divider(color: Color(0XFFDADADA), height: 1),

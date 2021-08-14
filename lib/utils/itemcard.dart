@@ -8,7 +8,7 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-            padding: const EdgeInsets.only(left:15),
+            padding: const EdgeInsets.only(left:15,right: 15),
                       child: GestureDetector(
                         onTap: (){
                           print("Hello");
@@ -25,8 +25,8 @@ class ItemCard extends StatelessWidget {
                           child: Stack(
                             children: [
                               Container(
-                              height: 200,
-                              width: 150,
+                              height: 250,
+                              width: 180,
                               child: Image.asset(photo, fit: BoxFit.cover,),
                               color: Colors.amber,
                             ),

@@ -135,9 +135,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ),
                     ),
                       Padding(
-                        padding: const EdgeInsets.only(top:5.0, left: 10, bottom: 10),
+                        padding: const EdgeInsets.only(top:5.0, left: 10,right: 10, bottom: 10),
                         child: Container(
-                          height: 200,
+                          height: 300,
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
       ),
       floatingActionButton: SpeedDial(
-        animatedIcon: AnimatedIcons.menu_close,
+        animatedIcon: AnimatedIcons.menu_home,
         backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
         children: [
