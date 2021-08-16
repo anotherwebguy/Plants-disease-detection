@@ -22,9 +22,9 @@ class _PotatoLateBlightState extends State<PotatoLateBlight> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/19.jpg'),
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/20.jpg'),
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/21.jpg'),
+                            AssetImage('assets/plate.jpg'),
+                            AssetImage('assets/plate2.jpg'),
+                            AssetImage('assets/plate3.jpeg'),
                           ],
                           dotSize: 4.0,
                           dotSpacing: 15.0,
@@ -112,11 +112,11 @@ class _PotatoLateBlightState extends State<PotatoLateBlight> {
               ),
 
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
-              child: Image.asset('assets/PotatoLateCycle.jpg'),
+            // Padding(
+            //   padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
+            //   child: Image.asset('assets/PotatoLateCycle.jpg'),
 
-            ),
+            // ),
             Padding(
               padding: EdgeInsets.only(top: 40, bottom: 20, left: 14,right: 14),
               child: Text(

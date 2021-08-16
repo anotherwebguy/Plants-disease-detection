@@ -22,11 +22,11 @@ class _PotatoEarlyBlightState extends State<PotatoEarlyBlight> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/16.jpg'),
+                            AssetImage('assets/16.jpg'),
                             // Photo from https://unsplash.com/photos/2d4lAQAlbDA
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/17.jpg'),
+                            AssetImage('assets/17.jpg'),
                             // Photo from https://unsplash.com/photos/FqqiAvJejto
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/18.jpg'),
+                            AssetImage('assets/18.jpg'),
                             // Photo from https://unsplash.com/photos/_-JR5TxKNSo
 
                           ],
@@ -116,11 +116,11 @@ class _PotatoEarlyBlightState extends State<PotatoEarlyBlight> {
               ),
 
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
-              child: Image.asset('assets/PotatoEarlyCycle.jpg'),
+            // Padding(
+            //   padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
+            //   child: Image.asset('assets/PotatoEarlyCycle.jpg'),
 
-            ),
+            // ),
             Padding(
               padding: EdgeInsets.only(top: 40, bottom: 20, left: 14,right: 14),
               child: Text(

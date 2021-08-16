@@ -22,11 +22,11 @@ class _CornCommonRustState extends State<CornCommonRust> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/10.jpg'),
+                            AssetImage('assets/corn.jpg'),
                             // Photo from https://unsplash.com/photos/2d4lAQAlbDA
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/11.jpg'),
+                            AssetImage('assets/corn2.jpg'),
                             // Photo from https://unsplash.com/photos/FqqiAvJejto
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/12.jpg'),
+                            AssetImage('assets/corn3.jpg'),
                             // Photo from https://unsplash.com/photos/_-JR5TxKNSo
 
                           ],
@@ -114,11 +114,6 @@ class _CornCommonRustState extends State<CornCommonRust> {
                     fontSize: 17,
                     fontFamily: 'Raleway'),
               ),
-
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
-              child: Image.asset('assets/RustDiseaseCycle.png'),
 
             ),
             Padding(

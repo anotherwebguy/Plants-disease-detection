@@ -22,11 +22,11 @@ class _GrapeBlackRotState extends State<GrapeBlackRot> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/25.jpg'),
+                            AssetImage('assets/grapeblack.jpg'),
                             // Photo from https://unsplash.com/photos/2d4lAQAlbDA
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/26.jpg'),
+                            AssetImage('assets/grapeblack2.jpg'),
                             // Photo from https://unsplash.com/photos/FqqiAvJejto
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/27.jpg'),
+                            AssetImage('assets/grapeblack3.jpg'),
                             // Photo from https://unsplash.com/photos/_-JR5TxKNSo
 
                           ],
@@ -114,11 +114,6 @@ class _GrapeBlackRotState extends State<GrapeBlackRot> {
                     fontSize: 17,
                     fontFamily: 'Raleway'),
               ),
-
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
-              child: Image.asset('assets/BlackRotDiseaseCycle.png'),
 
             ),
             Padding(

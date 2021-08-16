@@ -22,11 +22,11 @@ class _CornGrayLeafState extends State<CornGrayLeaf> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/7.png'),
+                            AssetImage('assets/corngray.jpeg'),
                             // https://unsplash.com/photos/2d4lAQAlbDA
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/8.jpg'),
+                            AssetImage('assets/corngray2.png'),
                             // https://unsplash.com/photos/FqqiAvJejto
-                            NetworkImage('https://github.com/midhun1998/Plant-App-Flutter-Project/blob/master/example/assets/9.jpg'),
+                            AssetImage('assets/corngray3.png'),
                             // Photo from https://unsplash.com/photos/_-JR5TxKNSo
 
                           ],
@@ -114,11 +114,6 @@ class _CornGrayLeafState extends State<CornGrayLeaf> {
                     fontSize: 17,
                     fontFamily: 'Raleway'),
               ),
-
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
-              child: Image.asset('assets/CornGreyDiseaseCycle.png'),
 
             ),
             Padding(

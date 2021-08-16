@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plantdiseasedetector/diseases/AppleScab.dart';
+import 'package:plantdiseasedetector/diseases/GrapeBlackRot.dart';
 import 'package:plantdiseasedetector/diseases/GrapeEsca.dart';
 import 'package:plantdiseasedetector/diseases/PotatoLateBlight.dart';
+import 'package:plantdiseasedetector/diseases/TomatoLateBlight.dart';
 import 'package:plantdiseasedetector/screens/drawer.dart';
 import 'package:plantdiseasedetector/screens/moisture.dart';
 import 'package:plantdiseasedetector/screens/notifications.dart';
@@ -146,20 +148,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             children: [
                               GestureDetector(
                                 onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>GrapeEsca()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>GrapeBlackRot()));
                                 },
                                 child: ItemCard(
-                                  title: "Grape Esca",
-                                  photo: "https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/22.jpg",
+                                  title: "Grape Black Rot",
+                                  photo: "assets/grapeblack.jpg",
                                 ),
                               ),
                               GestureDetector(
                                 onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AppleScab()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>TomatoLateBlight()));
                                 },
                                 child: ItemCard(
-                                  title: "Apple Scab",
-                                  photo: "https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/3.jpg",
+                                  title: "Tomato Late Blight",
+                                  photo: "assets/tlb3.jpg",
                                   ),
                               ),
                               GestureDetector(
@@ -167,8 +169,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>PotatoLateBlight()));
                                 },
                                 child: ItemCard(
-                                  title: "Potato Late Blight",
-                                  photo: "https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/33.jpg",
+                                  title: "Grape Leaf Blight",
+                                  photo: "assets/grapebli.jpg",
                                   ),
                               )
                             ],

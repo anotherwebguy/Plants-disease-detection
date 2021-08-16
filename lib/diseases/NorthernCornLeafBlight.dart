@@ -22,11 +22,11 @@ class _NorthernCornLeafBlightState extends State<NorthernCornLeafBlight> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/13.jpg'),
+                            AssetImage('assets/ncorn.JPG'),
                             // Photo from https://unsplash.com/photos/2d4lAQAlbDA
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/14.jpg'),
+                            AssetImage('assets/ncorn2.jpg'),
                             // Photo from https://unsplash.com/photos/FqqiAvJejto
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/15.jpg'),
+                            AssetImage('assets/ncorn3.png'),
                             // Photo from https://unsplash.com/photos/_-JR5TxKNSo
 
                           ],
@@ -114,11 +114,6 @@ class _NorthernCornLeafBlightState extends State<NorthernCornLeafBlight> {
                     fontSize: 17,
                     fontFamily: 'Raleway'),
               ),
-
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
-              child: Image.asset('assets/NorthernDiseaseCycle.jpg'),
 
             ),
             Padding(
