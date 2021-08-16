@@ -22,11 +22,11 @@ class _TomatoEarlyBlightState extends State<TomatoEarlyBlight> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/30.jpg'),
+                            AssetImage('assets/tlb.jpg'),
                             // Photo from https://unsplash.com/photos/2d4lAQAlbDA
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/31.jpg'),
+                            AssetImage('assets/tlb2.jpg'),
                             // Photo from https://unsplash.com/photos/FqqiAvJejto
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/32.jpg'),
+                            AssetImage('assets/tlb3.jpg'),
                             // Photo from https://unsplash.com/photos/_-JR5TxKNSo
 
                           ],

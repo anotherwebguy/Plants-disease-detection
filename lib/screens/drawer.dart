@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:plantdiseasedetector/authentication/signin.dart';
 import 'package:plantdiseasedetector/diseases/AppleCedarRust.dart';
+import 'package:plantdiseasedetector/diseases/CherrySourMildew.dart';
+import 'package:plantdiseasedetector/diseases/TomatoLeafSpot.dart';
 import 'package:plantdiseasedetector/screens/classifieddiseases.dart';
 import 'package:plantdiseasedetector/screens/homepage.dart';
 import 'package:plantdiseasedetector/screens/notifications.dart';

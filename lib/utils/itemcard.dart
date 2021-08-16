@@ -18,7 +18,7 @@ class ItemCard extends StatelessWidget {
                               Container(
                               height: 200,
                               width: 150,
-                              child: Image.network(photo, fit: BoxFit.cover,),
+                              child: Image.asset(photo, fit: BoxFit.cover,),
                               color: Colors.amber,
                             ),
                             Column(

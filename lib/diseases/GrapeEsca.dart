@@ -22,11 +22,11 @@ class _GrapeEscaState extends State<GrapeEsca> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/22.jpg'),
+                            AssetImage('assets/esca.jpg'),
                             // Photo from https://unsplash.com/photos/2d4lAQAlbDA
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/23.jpg'),
+                            AssetImage('assets/esca2.jpg'),
                             // Photo from https://unsplash.com/photos/FqqiAvJejto
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/24.JPG'),
+                            AssetImage('assets/esca3.jpeg'),
                             // Photo from https://unsplash.com/photos/_-JR5TxKNSo
 
                           ],

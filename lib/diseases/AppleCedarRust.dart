@@ -23,11 +23,11 @@ class _AppleCedarRustState extends State<AppleCedarRust> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/4.jpg'),
+                            AssetImage('assets/cedar.jpg'),
                             // Photo from https://unsplash.com/photos/2d4lAQAlbDA
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/5.jpg'),
+                            AssetImage('assets/cedar2.jpg'),
                             // Photo from https://unsplash.com/photos/FqqiAvJejto
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/6.jpg'),
+                            AssetImage('assets/cedar3.jpg'),
                             // Photo from https://unsplash.com/photos/_-JR5TxKNSo
 
                           ],

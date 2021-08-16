@@ -22,11 +22,11 @@ class _AppleScabState extends State<AppleScab> {
                       children: <Widget>[
                         Carousel(
                           images: [
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/1.jpg'),
+                            AssetImage('assets/scab.jpg'),
                             // Photo from https://unsplash.com/photos/2d4lAQAlbDA
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/2.jpg'),
+                            AssetImage('assets/scab2.jpg'),
                             // Photo from https://unsplash.com/photos/FqqiAvJejto
-                            NetworkImage('https://raw.githubusercontent.com/midhun1998/Plant-App-Flutter-Project/master/example/assets/3.jpg'),
+                            AssetImage('assets/scab3.jpg'),
                             // Photo from https://unsplash.com/photos/_-JR5TxKNSo
 
                           ],
@@ -96,11 +96,6 @@ class _AppleScabState extends State<AppleScab> {
               child: Text('     The first visible symptoms of apple scab appear in the spring in the form of minute, circular, olive-green spots on leaves, often along a main vein. As they enlarge, they become brownish-black and eventually coalesce to form large patches of necrotic tissue. As they develop further, they often coalesce and become raised, hard and corky. This restricts the expansion of the fruit and leads to distortion and cracking of the skin that expose the flesh. Light attacks do not affect the fruit quality significantly. However, the scabs can expose the fruits to opportunistic pathogens and rots, reducing the storage capacity and the quality.  Affected leaves are often deformed and fall off prematurely, leading to defoliation in case of heavy infections. On shoots, the infections causes blistering and cracking that can then provide entry for opportunistic pathogens. On the fruits, brown to dark brown circular areas appear on the surface.',textAlign: TextAlign.justify, style: TextStyle(
                 fontSize: 17,
                 fontFamily: 'Raleway'),),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
-              child: Image.asset('assets/AppleScabCycle.jpg'),
-
             ),
             Padding(
               padding: EdgeInsets.only(top: 40, bottom: 20, left: 14, right: 14),
