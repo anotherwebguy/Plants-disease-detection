@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:plantdiseasedetector/diseases/NorthernCornLeafBlight.dart';
+import 'package:plantdiseasedetector/diseases/Healthy.dart';
 import 'package:plantdiseasedetector/screens/homepage.dart';
 import 'package:plantdiseasedetector/screens/walkthrough.dart';
 import 'package:plantdiseasedetector/services/dbdata.dart';
