@@ -21,6 +21,7 @@ import 'package:plantdiseasedetector/diseases/TomatoEarlyBlight.dart';
 import 'package:plantdiseasedetector/diseases/TomatoLateBlight.dart';
 import 'package:plantdiseasedetector/diseases/TomatoLeafMold.dart';
 import 'package:plantdiseasedetector/diseases/TomatoLeafSpot.dart';
+import 'package:plantdiseasedetector/diseases/TomatoMosaic.dart';
 import 'package:plantdiseasedetector/diseases/TomatoSpider.dart';
 import 'package:plantdiseasedetector/diseases/TomatoTarget.dart';
 import 'package:plantdiseasedetector/diseases/TomatoYellow.dart';
@@ -154,6 +155,11 @@ List<DiseasesModel> getDiseases() {
   model26.image = "assets/curl.png";
   model26.tag = TomatoYellow();
 
+  DiseasesModel model27 = DiseasesModel();
+  model27.name="Tomato Mosaic Virus";
+  model27.image="assets/mosaic2.jpg";
+  model27.tag= TomatoMosaic();
+
   
 
   list.add(model1);
@@ -181,5 +187,6 @@ List<DiseasesModel> getDiseases() {
   list.add(model24);
   list.add(model25);
   list.add(model26);
+  list.add(model27);
   return list;
 }
