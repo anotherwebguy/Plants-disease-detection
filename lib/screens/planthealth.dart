@@ -261,7 +261,7 @@ class PlantHealth extends StatelessWidget {
                               FitnessAppTheme.nearlyDarkBlue,
                               HexColor("#8A98E8"),
                               HexColor("#8A98E8")
-                            ], angle: 140 + (360 - 140) * (1.0)),
+                            ], angle: 200),
                             child: SizedBox(
                               width: 108,
                               height: 108,

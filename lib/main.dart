@@ -5,6 +5,7 @@ import 'package:plantdiseasedetector/diseases/NorthernCornLeafBlight.dart';
 import 'package:plantdiseasedetector/screens/homepage.dart';
 import 'package:plantdiseasedetector/screens/walkthrough.dart';
 import 'package:plantdiseasedetector/services/dbdata.dart';
+import 'package:plantdiseasedetector/utils/getdiseases.dart';
 
 void main() async {
   try {
@@ -17,6 +18,7 @@ void main() async {
 
   await Firebase.initializeApp();
   await fetchData();
+  await fetchList();
   runApp(MyApp());
 }
 

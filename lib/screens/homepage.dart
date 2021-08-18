@@ -2,11 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:plantdiseasedetector/diseases/AppleCedarRust.dart';
 import 'package:plantdiseasedetector/diseases/AppleScab.dart';
+import 'package:plantdiseasedetector/diseases/CornGrayLeaf.dart';
 import 'package:plantdiseasedetector/diseases/GrapeBlackRot.dart';
 import 'package:plantdiseasedetector/diseases/GrapeEsca.dart';
 import 'package:plantdiseasedetector/diseases/PotatoLateBlight.dart';
 import 'package:plantdiseasedetector/diseases/TomatoLateBlight.dart';
+import 'package:plantdiseasedetector/screens/classifieddiseases.dart';
 import 'package:plantdiseasedetector/screens/drawer.dart';
 import 'package:plantdiseasedetector/screens/moisture.dart';
 import 'package:plantdiseasedetector/screens/notifications.dart';
@@ -132,7 +135,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             padding: EdgeInsets.only(left: l- 249),
                             child: GestureDetector(
                               onTap: (){
-                                //Navigator.push(context, MaterialPageRoute(builder: (context)=>));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ClassifiedDiseases()));
                               },
                               child: Text("View All", style: TextStyle(color: Colors.blue),)),
                           )
@@ -157,6 +160,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               ),
                               GestureDetector(
                                 onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AppleCedarRust()));
+                                },
+                                child: ItemCard(
+                                  title: "Apple Cedar Rust",
+                                  photo: "assets/cedar.jpg",
+                                  ),
+                              ),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CornGrayLeaf()));
+                                },
+                                child: ItemCard(
+                                  title: "Corn Gray Leaf",
+                                  photo: "assets/corngray.jpeg",
+                                  ),
+                              ),
+                              GestureDetector(
+                                onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>TomatoLateBlight()));
                                 },
                                 child: ItemCard(
@@ -172,7 +193,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   title: "Grape Leaf Blight",
                                   photo: "assets/grapebli.jpg",
                                   ),
-                              )
+                              ),
+
                             ],
                           ),
                         ),
