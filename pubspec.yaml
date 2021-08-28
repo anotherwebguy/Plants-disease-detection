@@ -43,6 +43,10 @@ dependencies:
   animations: ^2.0.0
   timeago: ^2.0.28
   carousel_pro: ^1.0.0
+  tflite: ^1.1.2
+  image: ^2.1.4
+  image_picker: ^0.6.0+10
+  progress_dialog: ^1.1.0+1
 
 dev_dependencies:
   flutter_test:
