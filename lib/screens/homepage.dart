@@ -48,6 +48,7 @@ import 'package:plantdiseasedetector/utils/widgets.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image/image.dart' as img;
+import 'package:nb_utils/nb_utils.dart';
 
 const String mobile = "MobileNet";
 
@@ -88,195 +89,151 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void resultPage(BuildContext context, String name) {
-    if(name == "apple apple scab"){
+    if (name == "apple apple scab") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => AppleScab()),
+        MaterialPageRoute(builder: (context) => AppleScab()),
       );
-
-    } else if(name == "apple black rot"){
+    } else if (name == "apple black rot") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => AppleBlack()),
+        MaterialPageRoute(builder: (context) => AppleBlack()),
       );
-    } else if(name == "apple cedar apple rust"){
+    } else if (name == "apple cedar apple rust") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => AppleCedarRust()),
+        MaterialPageRoute(builder: (context) => AppleCedarRust()),
       );
-    }else if(name == "cherry including sour powdery mildew"){
+    } else if (name == "cherry including sour powdery mildew") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => CherrySour()),
+        MaterialPageRoute(builder: (context) => CherrySour()),
       );
-    }else if(name == "corn maize cercospora leaf spot gray leaf spot"){
+    } else if (name == "corn maize cercospora leaf spot gray leaf spot") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => CornGrayLeaf()),
+        MaterialPageRoute(builder: (context) => CornGrayLeaf()),
       );
-    }else if(name == "corn maize common rust"){
+    } else if (name == "corn maize common rust") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => CornCommonRust()),
+        MaterialPageRoute(builder: (context) => CornCommonRust()),
       );
-    }else if(name == "corn maize northern leaf blight"){
+    } else if (name == "corn maize northern leaf blight") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => NorthernCornLeafBlight()),
+        MaterialPageRoute(builder: (context) => NorthernCornLeafBlight()),
       );
-    }else if(name == "grape black rot"){
+    } else if (name == "grape black rot") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => GrapeBlackRot()),
+        MaterialPageRoute(builder: (context) => GrapeBlackRot()),
       );
-    }else if(name == "grape esca black measles"){
+    } else if (name == "grape esca black measles") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => GrapeEsca()),
+        MaterialPageRoute(builder: (context) => GrapeEsca()),
       );
-    }else if(name == "grape leaf blight isariopsis leaf spot"){
+    } else if (name == "grape leaf blight isariopsis leaf spot") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => GrapeLeafBlight()),
+        MaterialPageRoute(builder: (context) => GrapeLeafBlight()),
       );
-    }else if(name == "orange haunglongbing citrus greening"){
+    } else if (name == "orange haunglongbing citrus greening") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => OrangeCitrus()),
+        MaterialPageRoute(builder: (context) => OrangeCitrus()),
       );
-    }else if(name == "peach bacterial spot"){
+    } else if (name == "peach bacterial spot") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => PeachSpot()),
+        MaterialPageRoute(builder: (context) => PeachSpot()),
       );
-    }else if(name == "pepper bell bacterial spot"){
+    } else if (name == "pepper bell bacterial spot") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => PepperBacterialSpot()),
+        MaterialPageRoute(builder: (context) => PepperBacterialSpot()),
       );
-    }else if(name == "potato early blight"){
+    } else if (name == "potato early blight") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => PotatoEarlyBlight()),
+        MaterialPageRoute(builder: (context) => PotatoEarlyBlight()),
       );
-    }else if(name == "potato late blight"){
+    } else if (name == "potato late blight") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => PotatoLateBlight()),
+        MaterialPageRoute(builder: (context) => PotatoLateBlight()),
       );
-    }else if(name == "squash powdery mildew"){
+    } else if (name == "squash powdery mildew") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => SquashMildew()),
+        MaterialPageRoute(builder: (context) => SquashMildew()),
       );
-    }else if(name == "strawberry leaf scorch"){
+    } else if (name == "strawberry leaf scorch") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => StrawberryLeafScorch()),
+        MaterialPageRoute(builder: (context) => StrawberryLeafScorch()),
       );
-    }else if(name == "tomato bacterial spot"){
+    } else if (name == "tomato bacterial spot") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => TomatoBacteriaSpot()),
+        MaterialPageRoute(builder: (context) => TomatoBacteriaSpot()),
       );
-    }else if(name == "tomato early blight"){
+    } else if (name == "tomato early blight") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => TomatoEarlyBlight()),
+        MaterialPageRoute(builder: (context) => TomatoEarlyBlight()),
       );
-    } else if(name == "tomato late blight"){
+    } else if (name == "tomato late blight") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => TomatoLateBlight()),
+        MaterialPageRoute(builder: (context) => TomatoLateBlight()),
       );
-    }else if(name == "tomato leaf mold"){
+    } else if (name == "tomato leaf mold") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => TomatoLeafMold()),
+        MaterialPageRoute(builder: (context) => TomatoLeafMold()),
       );
-    }else if(name == "tomato septoria leaf spot"){
+    } else if (name == "tomato septoria leaf spot") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => TomatoLeafSpot()),
+        MaterialPageRoute(builder: (context) => TomatoLeafSpot()),
       );
-    }else if(name == "ttomato spider mites two spotted spider mite"){
+    } else if (name == "ttomato spider mites two spotted spider mite") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => TomatoSpider()),
+        MaterialPageRoute(builder: (context) => TomatoSpider()),
       );
-    }else if(name == "tomato target spot"){
+    } else if (name == "tomato target spot") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => TomatoTarget()),
+        MaterialPageRoute(builder: (context) => TomatoTarget()),
       );
-    }else if(name == "tomato tomato yellow leaf curl virus"){
+    } else if (name == "tomato tomato yellow leaf curl virus") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => TomatoYellow()),
+        MaterialPageRoute(builder: (context) => TomatoYellow()),
       );
-    }else if(name == "tomato tomato mosaic virus"){
+    } else if (name == "tomato tomato mosaic virus") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => TomatoMosaic()),
+        MaterialPageRoute(builder: (context) => TomatoMosaic()),
       );
-    }else if(name == "apple healthy" || name == "blueberry healthy" || name == "cherry including sour healthy" || name == "corn maize healthy" || name == "grape healthy" || name == "peach healthy" || name == "pepper bell healthy" || name == "potato healthy" || name == "raspberry healthy" || name == "soybean healthyy" || name == "strawberry healthy" || name == "tomato healthy"){
+    } else if (name == "apple healthy" ||
+        name == "blueberry healthy" ||
+        name == "cherry including sour healthy" ||
+        name == "corn maize healthy" ||
+        name == "grape healthy" ||
+        name == "peach healthy" ||
+        name == "pepper bell healthy" ||
+        name == "potato healthy" ||
+        name == "raspberry healthy" ||
+        name == "soybean healthyy" ||
+        name == "strawberry healthy" ||
+        name == "tomato healthy") {
       Navigator.push(
         context,
-        MaterialPageRoute(
-
-            builder: (context) => Healthy()),
+        MaterialPageRoute(builder: (context) => Healthy()),
       );
     } else {
       showErrorProcessing(context);
@@ -401,67 +358,118 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   void showCustomDialogWithImage(BuildContext context, var labelForHighest) {
     Dialog dialogWithImage = Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      elevation: 0.0,
+      backgroundColor: Colors.transparent,
       child: Container(
-        height: 360.0,
-        width: 300.0,
+        decoration: new BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10.0,
+                offset: const Offset(0.0, 10.0)),
+          ],
+        ),
+        width: MediaQuery.of(context).size.width,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(12),
-              alignment: Alignment.center,
-              child: Text(
-                "We are not sure with the disease . Do you still wish to check the disease?",
-                style: TextStyle(
-                    fontFamily: "Regular",
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400),
-                textAlign: TextAlign.justify,
-              ),
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8), topRight: Radius.circular(8)),
+              child: Image(
+                  width: MediaQuery.of(context).size.width,
+                  image: AssetImage(
+                      'assets/widget_delete.jpg'),
+                  height: 120,
+                  fit: BoxFit.cover),
             ),
-            Container(
-              padding: EdgeInsets.all(12),
-              height: 200,
-              width: 300,
-              child: Image.asset(
-                'assets/confusion.png',
-                fit: BoxFit.scaleDown,
-              ),
-            ),
+            24.height,
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 14, 0, 0),
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: Text(
+                  "  We are not sure with the disease .\n Do you still wish to check the disease?",
+                  style:
+                      secondaryTextStyle(color: Color(0xFF5A5C5E))),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                RaisedButton(
-                  color: Colors.green,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    'No',
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+            16.height,
+            Text('Continue?',
+                style:
+                    boldTextStyle(color: Color(0xFF212121), size: 18)),
+            16.height,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: boxDecoration(
+                          color: t5DarkNavy,
+                          radius: 8,
+                          bgColor: Color(0xFFFFFFFF)),
+                      child: Center(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              WidgetSpan(
+                                  child: Padding(
+                                      padding: EdgeInsets.only(right: 8.0),
+                                      child: Icon(Icons.close,
+                                          color: Colors.blueAccent, size: 18))),
+                              TextSpan(
+                                  text: "No",
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: t5DarkNavy,
+                                      fontFamily: fontRegular)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ).onTap(() {
+                      Navigator.pop(context);
+                    }),
                   ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                RaisedButton(
-                  color: Colors.green,
-                  onPressed: () {
-                    Navigator.pop(context);
-                    resultPage(context, labelForHighest);
-                  },
-                  child: Text(
-                    'Yes',
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
-                  ),
-                )
-              ],
+                  16.width,
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      decoration:
+                          boxDecoration(bgColor: t5DarkNavy, radius: 8),
+                      child: Center(
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              WidgetSpan(
+                                  child: Padding(
+                                      padding: EdgeInsets.only(right: 8.0),
+                                      child: Icon(Icons.check,
+                                          color: Colors.white, size: 18))),
+                              TextSpan(
+                                  text: "Yes",
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      color: Colors.white,
+                                      fontFamily: fontRegular)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ).onTap(() {
+                      Navigator.pop(context);
+                      resultPage(context, labelForHighest);
+                    }),
+                  )
+                ],
+              ),
             ),
+            16.height,
           ],
         ),
       ),

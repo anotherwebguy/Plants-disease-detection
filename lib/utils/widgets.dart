@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:nb_utils/nb_utils.dart';
+import 'package:plantdiseasedetector/utils/colors.dart';
 import 'package:plantdiseasedetector/utils/constants.dart';
 
 Widget text(var text,
@@ -72,62 +74,62 @@ changeStatusColor(Color color) async {
   }
 }
 
-void showErrorProcessing(BuildContext context) {
-  Dialog dialogWithImage = Dialog(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-    child: Container(
-      height: 410.0,
-      width: 300.0,
-      child: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(12),
-            alignment: Alignment.center,
-            child: Text(
-              "We encountered a issue while processing!\nTip: Please make sure you take the image up close and with proper lighting.",
-              style: TextStyle(
-                  fontFamily: "Regular",
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400),
-              textAlign: TextAlign.justify,
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(12),
-            height: 200,
-            width: 300,
-            child: Image.asset(
-              'assets/oops.png',
-              fit: BoxFit.scaleDown,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 14, 0, 0),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              RaisedButton(
-                color: Colors.green,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'Continue',
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
+
+BoxDecoration boxDecoration({double radius = 2, Color color = Colors.transparent, Color bgColor = Colors.white, var showShadow = false}) {
+  return BoxDecoration(
+    color: bgColor,
+    boxShadow: showShadow ? [BoxShadow(color: shadowColorGlobal, blurRadius: 5, spreadRadius: 1)] : [BoxShadow(color: Colors.transparent)],
+    border: Border.all(color: color),
+    borderRadius: BorderRadius.all(Radius.circular(radius)),
   );
+}
+
+
+
+void showErrorProcessing(BuildContext context) {
+  AlertDialog dialogWithImage = AlertDialog(
+      backgroundColor: Colors.white,
+      content: Container(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(height: 120, color: t5DarkNavy),
+                Column(
+                  children: [
+                    Icon(Icons.warning, color: white, size: 32),
+                    8.height,
+                    Text('OOPs...', textAlign: TextAlign.center, style: boldTextStyle(color: white, size: 18)),
+                  ],
+                )
+              ],
+            ),
+            30.height,
+            Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: Text("We encountered a issue while processing!\nTip: Please make sure you take the image up close and with proper lighting.", style: secondaryTextStyle()),
+            ),
+            16.height,
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                decoration: boxDecoration(bgColor: t5DarkNavy, radius: 10),
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: text("Try again", textColor: white, fontSize: 16.0),
+              ),
+            ),
+            16.height,
+          ],
+        ),
+      ),
+      contentPadding: EdgeInsets.all(0),
+    );
   showDialog(
       context: context, builder: (BuildContext context) => dialogWithImage);
 }
