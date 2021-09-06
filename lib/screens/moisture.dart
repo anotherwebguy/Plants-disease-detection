@@ -1,9 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:plantdiseasedetector/models/apimodel.dart';
 import 'package:plantdiseasedetector/utils/colors.dart';
 import 'package:plantdiseasedetector/utils/planthealththeme.dart';
 import 'package:plantdiseasedetector/utils/waiveview.dart';
 
-class MoistureView extends StatelessWidget {
+class MoistureView extends StatefulWidget {
+  Conditions moist;
+  MoistureView({this.moist});
+  @override
+  _MoistureViewState createState() => _MoistureViewState();
+}
+
+class _MoistureViewState extends State<MoistureView> {
+  var time = "yesterday";
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(widget.moist.value);
+    if(int.parse(widget.moist.value)>=80){
+      time = DateTime.now().toString().substring(0,6);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,7 +58,7 @@ class MoistureView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 4, bottom: 3),
                           child: Text(
-                            '2100',
+                            'Moisture',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: FitnessAppTheme.fontName,
@@ -53,7 +71,7 @@ class MoistureView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 8, bottom: 8),
                           child: Text(
-                            'ml',
+                            '',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: FitnessAppTheme.fontName,
@@ -70,7 +88,7 @@ class MoistureView extends StatelessWidget {
                       padding:
                           const EdgeInsets.only(left: 4, top: 2, bottom: 14),
                       child: Text(
-                        'of daily goal 3.5L',
+                        'content in Soil',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: FitnessAppTheme.fontName,
@@ -114,7 +132,7 @@ class MoistureView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0),
                           child: Text(
-                            'Last wattered 8:26 AM',
+                            time,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: FitnessAppTheme.fontName,
@@ -140,7 +158,7 @@ class MoistureView extends StatelessWidget {
                           ),
                           Flexible(
                             child: Text(
-                              'Water the plants',
+                              widget.moist.subText,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontFamily: FitnessAppTheme.fontName,
@@ -178,7 +196,7 @@ class MoistureView extends StatelessWidget {
                   ],
                 ),
                 child: WaveView(
-                  percentageValue: 60.0,
+                  percentageValue: double.parse(widget.moist.value),
                 ),
               ),
             )
