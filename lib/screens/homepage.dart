@@ -46,6 +46,7 @@ import 'package:plantdiseasedetector/services/dbdata.dart';
 import 'package:plantdiseasedetector/utils/colors.dart';
 import 'package:plantdiseasedetector/utils/constants.dart';
 import 'package:plantdiseasedetector/utils/itemcard.dart';
+import 'package:plantdiseasedetector/utils/notificationservice.dart';
 import 'package:plantdiseasedetector/utils/planthealththeme.dart';
 import 'package:plantdiseasedetector/utils/widgets.dart';
 import 'package:progress_dialog/progress_dialog.dart';
@@ -71,10 +72,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   ProgressDialog pr;
   ApiDataModel dataModelApi;
   Conditions temp, humid, moist;
+  String head="";
+  bool firsttime;
 
   @override
   void initState() {
     super.initState();
+    NotificationService().initialise();
+    firsttime=true;
     loadModel();
   }
 
@@ -789,7 +794,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       //Temperature
 
       if (double.parse(dataModelApi.feeds[0].field1).toInt() >= 18 &&
-          double.parse(dataModelApi.feeds[0].field1).toInt() < 24) {
+          double.parse(dataModelApi.feeds[0].field1).toInt() <= 24) {
         temp = new Conditions();
         temp.icon = 'assets/temperature.png';
         temp.name = 'Temperature';
@@ -797,8 +802,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         temp.subText = 'Normal';
         temp.color = '${normalTemp}';
         temp.subColor = '${normalText}';
-      } else if (double.parse(dataModelApi.feeds[0].field1).toInt() >= 24 &&
-          double.parse(dataModelApi.feeds[0].field1).toInt() <= 28) {
+      } else if (double.parse(dataModelApi.feeds[0].field1).toInt() > 24 &&
+          double.parse(dataModelApi.feeds[0].field1).toInt() <= 35) {
         temp = new Conditions();
         temp.icon = 'assets/temperature.png';
         temp.name = 'Temperature';
@@ -806,7 +811,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         temp.subText = 'Moderate';
         temp.color = '${moderateTemp}';
         temp.subColor = '${moderateText}';
-      } else if (double.parse(dataModelApi.feeds[0].field1).toInt() > 28) {
+      } else if (double.parse(dataModelApi.feeds[0].field1).toInt() > 35) {
         temp = new Conditions();
         temp.icon = 'assets/temperature.png';
         temp.name = 'Temperature';
@@ -819,7 +824,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       //Humidity
 
       if (double.parse(dataModelApi.feeds[0].field2).toInt() >= 50 &&
-          double.parse(dataModelApi.feeds[0].field2).toInt() < 71) {
+          double.parse(dataModelApi.feeds[0].field2).toInt() <= 70) {
         humid = new Conditions();
         humid.icon = 'assets/humidity.png';
         humid.name = 'Humidity';
@@ -856,6 +861,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         moist.subText = 'No Irrigation Required';
         moist.color = '${darkBlueMoisture}';
         moist.subColor = '${normalText}';
+        head = moist.subText;
+        print(head);
       } else if (double.parse(dataModelApi.feeds[0].field3).toInt() >= 30 &&
           double.parse(dataModelApi.feeds[0].field3).toInt() < 70) {
         moist = new Conditions();
@@ -865,6 +872,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         moist.subText = 'Irrigation to Be Applied';
         moist.color = '${darkBlueMoisture}';
         moist.subColor = '${moderateText}';
+        head = moist.subText;
+        print(head);
       } else if (double.parse(dataModelApi.feeds[0].field3).toInt() < 30) {
         moist = new Conditions();
         moist.icon = 'assets/drip.png';
@@ -873,6 +882,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         moist.subText = 'Critically Low Soil Moisture';
         moist.color = '${darkBlueMoisture}';
         moist.subColor = '${highText}';
+        head = moist.subText;
+        print(head);
+        if(firsttime){
+          print("Moisture: "+head);
+          if(head=="Critically Low Soil Moisture"){
+            NotificationService().instantNotification(head,"Please water the plants with more water","alert");
+          }
+          else if(head=="Irrigation to Be Applied"){
+            NotificationService().instantNotification(head,"Please water the plants","alert");
+          }
+          else if(head=="No Irrigation Required"){
+            NotificationService().instantNotification(head,"Your crop is healthy","normal");
+          }
+          firsttime=false;
+        }
       }
     } else {
       // If that response was not OK, throw an error.
