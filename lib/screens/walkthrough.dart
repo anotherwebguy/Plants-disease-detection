@@ -7,6 +7,7 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:plantdiseasedetector/authentication/signin.dart';
 import 'package:plantdiseasedetector/screens/homepage.dart';
 import 'package:plantdiseasedetector/services/dbdata.dart';
+import 'package:plantdiseasedetector/utils/colors.dart';
 import 'package:plantdiseasedetector/utils/dots_indicator/src/dots_decorator.dart';
 import 'package:plantdiseasedetector/utils/dots_indicator/src/dots_indicator.dart';
 
@@ -20,11 +21,11 @@ class _LearnerWalkThroughState extends State<WalkThrough> {
   int currentIndexPage = 0;
   int pageLength;
   bool _loading = false;
-  var titles = ['Agri-Chain', 'Agri-Chain', 'Agri-Chain'];
+  var titles = ['AarogyaSheti', 'AarogyaSheti', 'AarogyaSheti'];
   var subTitles = [
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.This is simply text",
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.This is simply text",
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.This is simply text"
+    "An All-in-One App to Help farmers making farming a lot easier.",
+    "The App helps to detect defected regions of crops so that necessary care can be taken.",
+    "Smart Agriculture lets farmer know the live conditions of the crops."
   ];
 
   //List<LearnerWalk> mList1;
@@ -73,7 +74,7 @@ class _LearnerWalkThroughState extends State<WalkThrough> {
               color: Color(0xFFF6F7FA),
               child: PageView(
                 children: <Widget>[
-                  WalkThroughUp(textContent: "slide3.png"),
+                  WalkThroughUp(textContent: "sheti_icon.png"),
                   WalkThroughUp(textContent: "slide2.jpg"),
                   WalkThroughUp(textContent: "slide1.jpg"),
                 ],
@@ -151,7 +152,7 @@ class _LearnerWalkThroughState extends State<WalkThrough> {
                             },
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
-                              side: BorderSide(color: Colors.blue[700]),
+                              side: BorderSide(color: t5DarkNavy),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -168,7 +169,7 @@ class _LearnerWalkThroughState extends State<WalkThrough> {
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15.0,
-                                    color: Colors.blue[700],
+                                    color: t5DarkNavy,
                                   ),
                                 ),
                               ],

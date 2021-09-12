@@ -6,7 +6,7 @@ class NotificationService{
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
 
   initialise()async{
-    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('agri');
+    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('sheti_icon');
     final InitializationSettings initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid
     );
@@ -38,6 +38,7 @@ class NotificationService{
       'body': body,
       'time': DateTime.now(),
       'type': type,
+      'existence': true,
     });
   }
 }

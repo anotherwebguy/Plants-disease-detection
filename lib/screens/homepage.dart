@@ -3,6 +3,8 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -72,15 +74,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   ProgressDialog pr;
   ApiDataModel dataModelApi;
   Conditions temp, humid, moist;
-  String head="";
+  String head = "";
   bool firsttime;
+  int count=0;
 
   @override
   void initState() {
     super.initState();
     NotificationService().initialise();
-    firsttime=true;
+    firsttime = true;
     loadModel();
+    count=0;
+    checkForNotification();
   }
 
   Future loadModel() async {
@@ -485,6 +490,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         context: context, builder: (BuildContext context) => dialogWithImage);
   }
 
+  Future<void> checkForNotification() async {
+    int channelCount = 0;
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser.uid)
+          .collection('notifications')
+          .where('existence', isEqualTo: true)
+          .snapshots()
+          .listen((event) {
+        event.docChanges.forEach((element) {
+          if (element.type == DocumentChangeType.added &&
+              element.doc.data()['existence'] == true) {
+              setState(() {
+                count++;
+              });
+              updateNotification(element.doc.id);
+              print(count);
+          }
+        });
+      });
+    } catch (e) {
+      print("error");
+    }
+  }
+
   Future predictImage(File image) async {
     print("DEBUG: Inside Predict Image Function");
     await recognizeImage(image);
@@ -550,21 +581,68 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.push(
+                      Stack(
+                        children: <Widget>[
+                          new IconButton(
+                            icon: SvgPicture.asset(
+                              "assets/t5_notification_2.svg",
+                              width: 25,
+                              height: 25,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                count = 0;
+                              });
+                               Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Notifications()));
-                          print("SVsvsdv");
-                        },
-                        icon: SvgPicture.asset(
-                          "assets/t5_notification_2.svg",
-                          width: 25,
-                          height: 25,
-                          color: Colors.white,
-                        ),
+                            },
+                          ),
+                          count != 0
+                              ? new Positioned(
+                                  right: 11,
+                                  top: 11,
+                                  child: new Container(
+                                    padding: EdgeInsets.all(2),
+                                    decoration: new BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                    constraints: BoxConstraints(
+                                      minWidth: 14,
+                                      minHeight: 14,
+                                    ),
+                                    child: Text(
+                                      '$count',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 8,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                )
+                              : Positioned(
+                                  right: 11, top: 11, child: new Container())
+                        ],
                       ),
+                      // IconButton(
+                      //   onPressed: () {
+                      //     Navigator.push(
+                      //         context,
+                      //         MaterialPageRoute(
+                      //             builder: (context) => Notifications()));
+                      //     print("SVsvsdv");
+                      //   },
+                      //   icon: SvgPicture.asset(
+                      //     "assets/t5_notification_2.svg",
+                      //     width: 25,
+                      //     height: 25,
+                      //     color: Colors.white,
+                      //   ),
+                      // ),
                       SizedBox(width: 7),
                       IconButton(
                         onPressed: () {
@@ -629,7 +707,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           default:
                             return Column(
                               children: [
-                                PlantHealth(temp: temp,humid: humid,),
+                                PlantHealth(
+                                  temp: temp,
+                                  humid: humid,
+                                ),
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 15, bottom: 5),
@@ -741,7 +822,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     ),
                                   ),
                                 ),
-                                MoistureView(moist: this.moist,),
+                                MoistureView(
+                                  moist: this.moist,
+                                ),
                               ],
                             );
                         }
@@ -884,18 +967,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         moist.subColor = '${highText}';
         head = moist.subText;
         print(head);
-        if(firsttime){
-          print("Moisture: "+head);
-          if(head=="Critically Low Soil Moisture"){
-            NotificationService().instantNotification(head,"Please water the plants with more water","alert");
+        if (firsttime) {
+          print("Moisture: " + head);
+          if (head == "Critically Low Soil Moisture") {
+            NotificationService().instantNotification(
+                head, "Please water the plants with more water", "alert");
+          } else if (head == "Irrigation to Be Applied") {
+            NotificationService()
+                .instantNotification(head, "Please water the plants", "alert");
+          } else if (head == "No Irrigation Required") {
+            NotificationService()
+                .instantNotification(head, "Your crop is healthy", "normal");
           }
-          else if(head=="Irrigation to Be Applied"){
-            NotificationService().instantNotification(head,"Please water the plants","alert");
-          }
-          else if(head=="No Irrigation Required"){
-            NotificationService().instantNotification(head,"Your crop is healthy","normal");
-          }
-          firsttime=false;
+          firsttime = false;
         }
       }
     } else {

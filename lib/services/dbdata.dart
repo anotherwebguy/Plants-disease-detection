@@ -26,3 +26,14 @@ Future<void> fetchData() async {
     });
   } catch (e) {}
 }
+
+Future<void> updateNotification(String id) async {
+  await FirebaseFirestore.instance
+      .collection('users')
+      .doc(FirebaseAuth.instance.currentUser.uid)
+      .collection("notifications")
+      .doc(id)
+      .update({
+    'existence': false,
+  });
+}

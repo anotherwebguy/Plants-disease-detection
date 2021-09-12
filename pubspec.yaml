@@ -48,10 +48,16 @@ dependencies:
   image_picker: ^0.6.0+10
   progress_dialog: ^1.1.0+1
   flutter_local_notifications: ^4.0.1
+  flutter_launcher_icons: ^0.7.2+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:    
+ android: true    
+ ios: true    
+ image_path: "assets/sheti_icon.png"    
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
