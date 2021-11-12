@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Plant Disease Detection</h1>
+  <h1>Plant Disease Detection.</h1>
 </div>
 
 
