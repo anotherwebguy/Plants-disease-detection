@@ -1,6 +1,6 @@
 # Plants-Disease-Detector
 
-<div align="center"> A Smart-Farming solution for farmers to ease the process of farming with the help of IOT and ML . It provides the farmers a way to monitor their farms with IOT smart solutions and early plants disease detection through ML. </div>
+<div align="center"> A Smart-Farming solution for farmers to ease the process of farming with the help of IOT and ML . It provides the farmers a way to monitor their farms with IOT smart solutions and early plants disease detection through ML </div>
 
 <div align="center">
 <div > 
